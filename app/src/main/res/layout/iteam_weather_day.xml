@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <androidx.cardview.widget.CardView
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/cv"
+        android:backgroundTint="#33495f"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="10sp"
+      >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="8dp"
+            android:id="@+id/constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            app:layout_constraintTop_toTopOf="@id/constraint"
+            app:layout_constraintStart_toStartOf="@id/constraint"
+            app:layout_constraintEnd_toStartOf="@id/imgStatus"
+            android:textColor="@color/white"
+            android:text="@string/date"
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/constraint"
+            app:layout_constraintStart_toEndOf="@id/txtDate"
+            app:layout_constraintEnd_toStartOf="@id/txtStatus"
+            app:layout_constraintBottom_toBottomOf="@id/txtDate"
+            android:id="@+id/imgStatus"
+            android:src="@drawable/clouds"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:ignore="ContentDescription">
+
+        </ImageView>
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:text="@string/temprature"
+            app:layout_constraintTop_toTopOf="@id/txtDate"
+            app:layout_constraintStart_toEndOf="@id/imgStatus"
+            app:layout_constraintEnd_toStartOf="@id/txtTemp"
+            android:id="@+id/txtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <TextView
+            android:textColor="@color/white"
+          app:layout_constraintTop_toTopOf="@id/txtStatus"
+            app:layout_constraintStart_toEndOf="@id/txtStatus"
+            app:layout_constraintEnd_toEndOf="@id/constraint"
+            android:text="@string/temprature"
+            android:id="@+id/txtTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

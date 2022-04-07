@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Weather Forecast</string>
+    <string name="title_home">Home</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_favourite">Favourite</string>
+    <string name="language">Language</string>
+    <string name="location">Location</string>
+    <string name="temprature">Temprature</string>
+    <string name="wind_speed">WindSpeed</string>
+    <string name="date">Date</string>
+    <string name="days">Days</string>
+    <string name="hours">Hours</string>
+
+
+    <string name="weather_status">Clear Sky</string>
+    <string name="confirm">Confirm</string>
+
+
+    <string name="gps">GPS</string>
+    <string name="map">Map</string>
+    <string name="arabic">Arabic</string>
+    <string name="english">English</string>
+
+    <string name="temp_celsius_radioBtn">Celsius </string>
+    <string name="temp_kelvin_radioBtn">Kelvin </string>
+    <string name="temp_fahrenheit_radioBtn">Fahrenheit </string>
+
+    <string name="meter_radioBtn">Meter/Sec</string>
+    <string name="mile_radioBtn">Miles/Hour</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="submit">Submit</string>
+
+</resources>
