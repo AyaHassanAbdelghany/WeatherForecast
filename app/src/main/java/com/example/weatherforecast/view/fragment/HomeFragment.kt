@@ -178,8 +178,6 @@ class HomeFragment : Fragment() {
                 , ConcreteLocalSource.getInstance(requireContext())
                 , SharedPrefs.getInstance(requireContext()),requireContext()),requireContext())
         locationViewModel = ViewModelProvider(this, locationViewModelFactory)[LocationViewModel::class.java]
-
-
     }
 
     private fun isLocationEnabled(): Boolean {

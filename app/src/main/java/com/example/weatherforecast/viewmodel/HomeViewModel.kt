@@ -48,7 +48,12 @@ class HomeViewModel(iRepo :RepoInterface,var context:Context) : ViewModel() {
         var local = Locale( getLocalizationSharedPref())
         val geocoder = Geocoder(context,local)
         val addresses: List<Address> = geocoder.getFromLocation(loc.latitude, loc.longitude, 1)
-        return addresses[0].countryName
+        if(!addresses.isNullOrEmpty()){
+            return addresses[0].countryName
+        }
+        else{
+            return "No City"
+        }
     }
 
     fun getLocalizationDevice():String{

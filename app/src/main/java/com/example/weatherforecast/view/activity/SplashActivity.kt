@@ -80,7 +80,7 @@ class SplashActivity : AppCompatActivity() {
             if(radioButton.text == "Map")
                 startActivity(Intent(applicationContext, MapsActivity::class.java))
             else startActivity(Intent(applicationContext, MainActivity::class.java))
-            builder.dismiss()
+            builder.cancel()
             finish()
         }
         builder.setCanceledOnTouchOutside(false)

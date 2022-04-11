@@ -18,7 +18,9 @@
         android:theme="@style/Theme.WeatherForecast">
         <activity
             android:name=".view.activity.FavouriteDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -26,13 +28,19 @@
 
         <activity
             android:name=".view.activity.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+        />
         <activity
             android:name=".view.activity.MapsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+        />
         <activity
             android:name=".view.activity.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

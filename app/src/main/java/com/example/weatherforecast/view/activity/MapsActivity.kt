@@ -96,7 +96,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             override fun onMarkerDragEnd(location: Marker) {
                 currentLocation = LatLng(location.position.latitude,location.position.longitude)
-                val address  = getCity(currentLocation)
+                val address  = homeViewModel.getCity(currentLocation)
                 marker.title =address
                 marker.showInfoWindow()
             }
@@ -111,23 +111,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.setOnMapClickListener { location ->
             currentLocation = LatLng(location.latitude, location.longitude)
             marker.position = location
-              val address = getCity(currentLocation)
+              val address = homeViewModel.getCity(currentLocation)
             marker.title = address
             marker.showInfoWindow()
         }
     }
 
-    fun getCity(loc: LatLng): String{
-        var local = Locale( homeViewModel.getLocalizationSharedPref())
-        val geocoder = Geocoder(this,local)
-        val addresses: List<Address> = geocoder.getFromLocation(loc.latitude, loc.longitude, 1)
-        if(!addresses.isNullOrEmpty()){
-            return addresses[0].countryName
-        }
-        else{
-            return ""
-        }
-    }
 
     private fun init(){
         favWeatherViewModelFactory = FavWeatherViewModelFactory(
