@@ -3,6 +3,7 @@ package com.example.weatherforecast.localsource.shared
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.weatherforecast.enum.Units
+import com.example.weatherforecast.pojo.AlertWeather
 import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
 

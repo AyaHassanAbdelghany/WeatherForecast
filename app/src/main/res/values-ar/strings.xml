@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">حالة الجو</string>
+    <string name="title_home">الرئيسية</string>
+    <string name="title_settings">الاعدادات</string>
+    <string name="title_favourite">المفضلة</string>
+    <string name="title_alert">المنبة</string>
+
+    <string name="language">اللغة</string>
+    <string name="location">الموقع</string>
+    <string name="temprature">درجة الحرارة</string>
+    <string name="wind_speed">سرعة الرياح</string>
+    <string name="date">اليوم</string>
+    <string name="days">الايام</string>
+    <string name="hours">الساعات</string>
+
+    <string name="weather_status">سماء صافية</string>
+    <string name="confirm">تاكيد</string>
+
+
+    <string name="gps">تحديد الموقع</string>
+    <string name="map">الخريطة</string>
+    <string name="arabic">العربية</string>
+    <string name="english">الانجليزية</string>
+
+    <string name="temp_celsius_radioBtn">درجة مئوية </string>
+    <string name="temp_kelvin_radioBtn">كلفن </string>
+    <string name="temp_fahrenheit_radioBtn">فهرنهايت </string>
+
+    <string name="meter_radioBtn">متر/ثانية</string>
+    <string name="mile_radioBtn">مللي/ساعة</string>
+    <string name="title_activity_maps">الخريطة</string>
+    <string name="submit">تاكيد</string>
+    <string name="from">من</string>
+    <string name="end">الي</string>
+    <string name="time">الوقت</string>
+
+    <string name="pressure">ه.ب.أ</string>
+    <string name="MeterPerSec">متر/ثانية</string>
+    <string name="MilesPerHour">مللي/ساعة</string>
+    <string name="Fahrenheit">°ف</string>
+    <string name="Kelvin">°ك</string>
+    <string name="Celsius">°س</string>
+
+</resources>

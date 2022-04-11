@@ -11,10 +11,10 @@ import com.example.weatherforecast.constant.FormatWeather
 import com.example.weatherforecast.pojo.Hourly
 import com.example.weatherforecast.viewmodel.HomeViewModel
 import com.squareup.picasso.Picasso
+import java.util.*
 
 
-
-class WeatherHourlyAdapter :RecyclerView.Adapter<WeatherHourlyAdapter.ViewHolder>()  {
+class WeatherHourlyAdapter (var lang :String):RecyclerView.Adapter<WeatherHourlyAdapter.ViewHolder>()  {
 
     private var hours :List<Hourly> = listOf()
 
@@ -32,11 +32,14 @@ class WeatherHourlyAdapter :RecyclerView.Adapter<WeatherHourlyAdapter.ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(hours[position])
 
     inner class ViewHolder(private var binding: ItemWeatherHourBinding) : RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("SetTextI18n")
         fun bind(currentItem: Hourly){
 
-            binding.txtTemp.text = currentItem.temp.toString()+ HomeViewModel.weatherUnits.temp.unit
-            binding.txtTime.text =FormatWeather.getFormat(currentItem.dt,Constants.formatTime)
+            binding.txtTemp.text = "${
+                String.format(
+                    Locale(lang),"%d",
+                    currentItem.temp.toInt())} ${
+                HomeViewModel.weatherUnits.temp}"
+            binding.txtTime.text =FormatWeather.getFormat(currentItem.dt,Constants.formatTime,lang)
             val uri = FormatWeather.getIconFormat(currentItem.weather.first().icon)
             Picasso.get().load(uri).placeholder(R.drawable.clouds)
                 .into(binding.imgStatus)

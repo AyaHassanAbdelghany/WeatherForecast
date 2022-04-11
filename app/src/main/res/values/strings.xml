@@ -3,6 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_settings">Settings</string>
     <string name="title_favourite">Favourite</string>
+    <string name="title_alert">Alert</string>
     <string name="language">Language</string>
     <string name="location">Location</string>
     <string name="temprature">Temprature</string>
@@ -29,5 +30,16 @@
     <string name="mile_radioBtn">Miles/Hour</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="submit">Submit</string>
+    <string name="from">From</string>
+    <string name="end">End</string>
+    <string name="time">Time</string>
+
+    <string name="pressure">hpa</string>
+    <string name="MeterPerSec">Meter/Sec</string>
+    <string name="MilesPerHour">Miles/Hour</string>
+    <string name="Fahrenheit">°F</string>
+    <string name="Kelvin">°K</string>
+    <string name="Celsius">°C</string>
+
 
 </resources>

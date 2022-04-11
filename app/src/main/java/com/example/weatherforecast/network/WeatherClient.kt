@@ -4,7 +4,7 @@ import com.example.weatherforecast.pojo.BaseWeather
 
 class WeatherClient private constructor():RemoteSource{
 
-    var apiKey :String = "2bc3dffbbab37ad55305ed046d78137c"
+    var apiKey :String = "98b3e64a3f1086083561278734496b12"
 
     override suspend fun getWeather(lat: Double, lon: Double, unit: String, lang:String): BaseWeather {
         val weatherService  : WeatherService =RetrofitHelper.getClient()

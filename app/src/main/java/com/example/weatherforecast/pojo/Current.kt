@@ -15,19 +15,19 @@ data class Current(
     @SerializedName("feels_like")
     var feels_like: Double,
     @SerializedName("pressure")
-    var pressure: Int,
+    var pressure: Double,
     @SerializedName("humidity")
-    var humidity: Int,
+    var humidity: Double,
     @SerializedName("dew_point")
     var dew_point: Double,
     @SerializedName("uvi")
     var uvi: Double,
     @SerializedName("clouds")
-    var clouds: Int,
+    var clouds: Double,
     @SerializedName("visibility")
     var visibility: Int,
     @SerializedName("wind_speed")
-    var wind_speed: Float,
+    var wind_speed: Double,
     @SerializedName("wind_deg")
     var wind_deg: Int,
     @SerializedName("weather")

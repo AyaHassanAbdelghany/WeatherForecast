@@ -5,20 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HomeFragment"
+    tools:context=".view.fragment.HomeFragment"
+    android:background="@drawable/weatherback"
     >
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/weatherback"
+            android:background="#A9061927"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraint"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#A9061927"
                 >
                     <TextView
             android:id="@+id/txtLocation"
@@ -82,18 +82,18 @@
 
                         </androidx.recyclerview.widget.RecyclerView>
 
-                        <TextView
-                            android:textColor="@color/white"
-                            android:id="@+id/txtDays"
-                            android:textSize="25sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="@string/days"
-                            app:layout_constraintEnd_toEndOf="@id/cardview"
-                            app:layout_constraintStart_toStartOf="@id/cardview"
-                            app:layout_constraintTop_toBottomOf="@id/recycler_hours"></TextView>
+                    <TextView
+                        android:textColor="@color/white"
+                        android:id="@+id/txtDays"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/days"
+                        app:layout_constraintEnd_toEndOf="@id/cardview"
+                        app:layout_constraintStart_toStartOf="@id/cardview"
+                        app:layout_constraintTop_toBottomOf="@id/recycler_hours" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recycler_days"

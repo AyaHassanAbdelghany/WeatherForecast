@@ -8,9 +8,10 @@ class FormatWeather {
 
     companion object{
 
-        fun getFormat(date :Int,format :String):String{
+        fun getFormat(date :Int,format :String,lang:String):String{
             val date = Date(date * 1000L)
-            val jdf = SimpleDateFormat(format,Locale.getDefault())
+            var locale = Locale(lang)
+            val jdf = SimpleDateFormat(format,locale)
             val _date: String = jdf.format(date)
             return _date
         }

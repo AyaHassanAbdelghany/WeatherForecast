@@ -50,7 +50,6 @@ class LocationViewModel (private var iRepo:RepoInterface,private var context:Con
                 _location.postValue(currentLocation)
             }
         }
-
         fusedLocationProviderClient.requestLocationUpdates(
             locationRequest, mLocationCallback,
             Looper.myLooper()

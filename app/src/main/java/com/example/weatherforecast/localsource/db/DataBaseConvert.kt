@@ -1,10 +1,7 @@
 package com.example.weatherapp.model
 
 import androidx.room.TypeConverter
-import com.example.weatherforecast.pojo.BaseWeather
-import com.example.weatherforecast.pojo.Current
-import com.example.weatherforecast.pojo.Daily
-import com.example.weatherforecast.pojo.Hourly
+import com.example.weatherforecast.pojo.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
@@ -34,6 +31,30 @@ class DataBaseConvert : Serializable {
         return gson.toJson(data, type)
     }
 
+
+
+    @TypeConverter
+    fun stringToObjectList(data: String?): List<String> {
+        if (data == null) {
+            return emptyList()
+        }
+        val listType = object : TypeToken<List<String?>?>() {}.type
+        return gson.fromJson<List<String>>(
+            data,
+            listType
+        )
+    }
+
+    @TypeConverter
+    fun objectListToString(data: List<String?>?): String? {
+        if (data == null) {
+            return null
+        }
+        val gson = Gson()
+        val type =
+            object : TypeToken<List<String?>?>() {}.type
+        return gson.toJson(data, type)
+    }
     @TypeConverter
     fun stringHourlyToObjectList(data: String?): List<Hourly> {
         if (data == null) {
@@ -82,27 +103,29 @@ class DataBaseConvert : Serializable {
 
 
     @TypeConverter
-    fun stringBaseWeatherToObjectList(data: String?): List<BaseWeather> {
+    fun stringAlertToObjectList(data: String?): List<AlertWeather> {
         if (data == null) {
             return emptyList()
         }
-        val listType = object : TypeToken<List<BaseWeather?>?>() {}.type
-        return gson.fromJson<List<BaseWeather>>(
+        val listType = object : TypeToken<List<AlertWeather?>?>() {}.type
+        return gson.fromJson<List<AlertWeather>>(
             data,
             listType
         )
     }
 
     @TypeConverter
-    fun objectBaseWeatherListToString(data: List<BaseWeather?>?): String? {
+    fun objectAlertListToString(data: List<AlertWeather?>?): String? {
         if (data == null) {
             return null
         }
         val gson = Gson()
         val type =
-            object : TypeToken<List<BaseWeather?>?>() {}.type
+            object : TypeToken<List<AlertWeather?>?>() {}.type
         return gson.toJson(data, type)
     }
+
+
 
     companion object {
         var gson = Gson()

@@ -28,6 +28,7 @@
             app:layout_constraintEnd_toEndOf="@id/constraint"
             app:layout_constraintTop_toTopOf="@id/constraint"
             app:layout_constraintStart_toStartOf="@id/constraint"
+            android:textSize="18sp"
        android:text="@string/date"
        android:id="@+id/txtTime"
        android:layout_width="wrap_content"

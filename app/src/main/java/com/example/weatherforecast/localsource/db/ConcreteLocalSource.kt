@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import com.example.roomdemomvvm.db.AppDataBaseWeather
 import com.example.roomdemomvvm.db.LocalSource
+import com.example.weatherforecast.pojo.Alert
 import com.example.weatherforecast.pojo.BaseWeather
 
 class ConcreteLocalSource  : LocalSource {
@@ -28,16 +29,30 @@ class ConcreteLocalSource  : LocalSource {
 
 
     override fun insertWeather(weather: BaseWeather) {
+        dao.deleteWeather()
         dao.insertWeather(weather)
 
     }
 
-    override fun deleteWeather(weather: BaseWeather) {
-
+    suspend override fun deleteFavWeather(weather: BaseWeather) {
+       favDao.deleteFavWeather(weather)
     }
 
-    override suspend fun getWeather(lat :Double,lon :Double): BaseWeather {
-       return dao.getWeather(lat,lon)
+    override suspend fun getWeather(): BaseWeather {
+       return dao.getWeather()
+    }
+
+
+    override fun insertAlertWeather(alert: Alert) {
+        dao.insertAlertWeather(alert)
+    }
+
+    override suspend fun deleteAlertWeather(alert: Alert) {
+        dao.deleteAlertWeather(alert)
+    }
+
+    override suspend fun getAlertWeather(): List<Alert> {
+        return dao.getAlertWeather()
     }
 
     override fun insertFavWeather(weather: BaseWeather) {

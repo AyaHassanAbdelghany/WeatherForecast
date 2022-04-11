@@ -1,9 +1,8 @@
-package com.example.weatherforecast.view
+package com.example.weatherforecast.view.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -39,7 +38,9 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         init()
 
-        homeViewModel.addLocalizationSharedPref(homeViewModel.getLocalizationDevice())
+        if(homeViewModel.getLocalizationSharedPref().isNullOrEmpty()){
+            homeViewModel.addLocalizationSharedPref(homeViewModel.getLocalizationDevice())
+        }
 
          if(locationViewModel.getGpsOrMapSharedPre().isEmpty())
          showDialog()
@@ -51,7 +52,7 @@ class SplashActivity : AppCompatActivity() {
 
         homeViewModelFactory = HomeViewModelFactory(WeatherRepo.getInstance(WeatherClient.getInstance()
             ,ConcreteLocalSource.getInstance(this)
-            , SharedPrefs.getInstance(this),this))
+            , SharedPrefs.getInstance(this),this),this)
         homeViewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
     locationViewModelFactory = LocationViewModelFactory(
         WeatherRepo.getInstance(
@@ -69,6 +70,7 @@ class SplashActivity : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.dialog,null)
         val  btnSubmit= view.findViewById<Button>(R.id.btnSubmit)
         val  radioGroup = view.findViewById<RadioGroup>(R.id.radioGroupLocation)
+
         builder.setView(view)
 
         btnSubmit.setOnClickListener {

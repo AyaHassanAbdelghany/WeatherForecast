@@ -1,11 +1,10 @@
 package com.example.weatherforecast.pojo
 
-import com.example.weatherforecast.enum.Units
 
 data class WeatherUnit(
-    var temp :Units,
-    var windSpeed :Units,
+    var temp :String,
+    var windSpeed :String,
+    var pressure :String ,
     var humidity:String="%",
-    var pressure :String = "hpa",
     var clouds :String = "%"
 )

@@ -100,33 +100,35 @@
             tools:ignore="ContentDescription">
 
         </ImageView>
-        <TextView
-            app:layout_constraintBottom_toBottomOf="@id/imgPressure"
-            app:layout_constraintTop_toTopOf="@id/imgPressure"
-            app:layout_constraintStart_toEndOf="@id/imgPressure"
-            app:layout_constraintEnd_toStartOf="@id/imgWind"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:text="@string/temprature"
-            android:id="@+id/txtPressure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </TextView>
 
 
-        <ImageView
-         app:layout_constraintTop_toTopOf="@id/imgPressure"
-            app:layout_constraintStart_toEndOf="@id/txtPressure"
-            app:layout_constraintEnd_toStartOf="@id/txtWind"
-            android:id="@+id/imgWind"
-            android:src="@drawable/wind"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            tools:ignore="ContentDescription">
+    <TextView
+        android:id="@+id/txtPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:text="@string/temprature"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/imgPressure"
+        app:layout_constraintStart_toEndOf="@id/imgPressure"
+        app:layout_constraintTop_toTopOf="@id/imgPressure">
 
-        </ImageView>
-        <TextView
+    </TextView>
+
+    <ImageView
+        android:id="@+id/imgWind"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/wind"
+        app:layout_constraintStart_toEndOf="@id/txtPressure"
+        app:layout_constraintTop_toTopOf="@id/imgPressure"
+        tools:ignore="ContentDescription">
+
+    </ImageView>
+
+    <TextView
 
             app:layout_constraintTop_toTopOf="@id/imgWind"
             app:layout_constraintStart_toEndOf="@id/imgWind"
@@ -163,17 +165,15 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/imgCLoud"
-        app:layout_constraintEnd_toStartOf="@id/imgHumidity"
         app:layout_constraintHorizontal_bias="0.39"
-        app:layout_constraintStart_toEndOf="@id/imgCLoud"
-        app:layout_constraintTop_toTopOf="@id/imgCLoud">
+        app:layout_constraintStart_toStartOf="@id/txtPressure"
+        app:layout_constraintTop_toBottomOf="@id/txtPressure">
 
     </TextView>
 
     <ImageView
            app:layout_constraintTop_toTopOf="@id/imgCLoud"
-            app:layout_constraintStart_toEndOf="@id/txtCloud"
-            app:layout_constraintEnd_toStartOf="@id/txtHumidity"
+            app:layout_constraintStart_toStartOf="@id/imgWind"
             android:id="@+id/imgHumidity"
             android:src="@drawable/humidity"
             android:layout_width="30dp"

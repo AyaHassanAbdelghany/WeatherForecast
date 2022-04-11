@@ -1,9 +1,7 @@
 package com.example.weatherforecast.pojo
 
 import androidx.room.Entity
-import androidx.room.Ignore
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
 @Entity(tableName = "weather", primaryKeys = ["lat","lon"])
 data class BaseWeather(
@@ -20,5 +18,7 @@ data class BaseWeather(
     @SerializedName("hourly")
    var hourly :List<Hourly>,
     @SerializedName("daily")
-   var daily :List<Daily>
-)
+   var daily :List<Daily>,
+    @SerializedName("alerts")
+    var alert: List<AlertWeather>?
+    )

@@ -5,9 +5,10 @@ import androidx.room.*
 import kotlin.jvm.Synchronized
 import com.example.weatherapp.model.DataBaseConvert
 import com.example.weatherforecast.localsource.db.WeatherDAO
+import com.example.weatherforecast.pojo.Alert
 import com.example.weatherforecast.pojo.BaseWeather
 
-@Database(entities = [BaseWeather::class], version = 1)
+@Database(entities = [BaseWeather::class,Alert::class], version = 1)
 @TypeConverters(DataBaseConvert::class)
 abstract class AppDataBaseWeather : RoomDatabase() {
     abstract fun weatherDAO(): WeatherDAO

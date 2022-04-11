@@ -1,6 +1,8 @@
 package com.example.weatherforecast.repo
 
 import com.example.weatherforecast.enum.Units
+import com.example.weatherforecast.pojo.Alert
+import com.example.weatherforecast.pojo.AlertWeather
 import com.example.weatherforecast.pojo.BaseWeather
 import com.google.android.gms.maps.model.LatLng
 import java.util.*
@@ -27,10 +29,17 @@ interface RepoInterface {
     fun addLocalizationSharedPref(locale:String)
     fun getLocalizationSharedPref():String
 
+
     //room
      fun insertWeather(weather:BaseWeather)
-    suspend fun getWeatherOffline(lat :Double, lon :Double):BaseWeather
+    suspend fun getWeatherOffline():BaseWeather
+
     fun insertFavWeather(weather:BaseWeather)
-    suspend fun getFavWeatherOffline():List<BaseWeather>
+    suspend fun getFavWeather():List<BaseWeather>
+    suspend fun deleteFavWeather(weather:BaseWeather)
+
+    fun insertAlertWeather(alert:Alert)
+    suspend fun getAlertWeather():List<Alert>
+    suspend fun deleteAlertWeather(alert:Alert)
 
 }

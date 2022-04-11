@@ -1,17 +1,14 @@
-package com.example.weatherforecast.view
+package com.example.weatherforecast.view.fragment
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherforecast.adapter.FavouriteAdapter
-import com.example.weatherforecast.adapter.OnClickFavouriteWeatherListner
+import com.example.weatherforecast.adapter.OnClickFavWeatherListner
 import com.example.weatherforecast.databinding.FragmentFavouriteBinding
 import com.example.weatherforecast.viewmodel.FavWeatherViewModel
 import com.example.weatherforecast.viewmodel.viewmodelfactory.FavWeatherViewModelFactory
@@ -20,13 +17,15 @@ import com.example.weatherforecast.localsource.shared.SharedPrefs
 import com.example.weatherforecast.network.WeatherClient
 import com.example.weatherforecast.pojo.BaseWeather
 import com.example.weatherforecast.repo.WeatherRepo
+import com.example.weatherforecast.view.activity.FavouriteDetailsActivity
+import com.example.weatherforecast.view.activity.MapsActivity
 import com.example.weatherforecast.viewmodel.HomeViewModel
 import com.example.weatherforecast.viewmodel.viewmodelfactory.HomeViewModelFactory
-import com.google.android.gms.maps.model.LatLng
+import com.google.gson.Gson
 import java.util.*
 
 
-class FavouriteFragment : Fragment(),OnClickFavouriteWeatherListner {
+class FavouriteFragment : Fragment(),OnClickFavWeatherListner {
 
    private lateinit var binding:FragmentFavouriteBinding
    private lateinit var favouriteAdapter: FavouriteAdapter
@@ -67,16 +66,11 @@ class FavouriteFragment : Fragment(),OnClickFavouriteWeatherListner {
     override fun onResume() {
         super.onResume()
         favWeatherViewModel.getFavWeather()
-
     }
     private fun init(){
-
-        favouriteAdapter = FavouriteAdapter(this)
-        binding.recyclerFav.adapter = favouriteAdapter
-
         homeViewModelFactory = HomeViewModelFactory(WeatherRepo.getInstance(WeatherClient.getInstance()
             ,ConcreteLocalSource.getInstance(requireContext())
-            , SharedPrefs.getInstance(requireContext()),requireContext()))
+            , SharedPrefs.getInstance(requireContext()),requireContext()),requireContext())
         homeViewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
         favWeatherViewModelFactory = FavWeatherViewModelFactory(
             WeatherRepo.getInstance(
@@ -84,10 +78,18 @@ class FavouriteFragment : Fragment(),OnClickFavouriteWeatherListner {
                 , ConcreteLocalSource.getInstance(requireContext())
                 , SharedPrefs.getInstance(requireContext()),requireContext()))
         favWeatherViewModel = ViewModelProvider(this, favWeatherViewModelFactory)[FavWeatherViewModel::class.java]
-
+        favouriteAdapter = FavouriteAdapter(homeViewModel,this)
+        binding.recyclerFav.adapter = favouriteAdapter
     }
 
-    override fun onClick(baseWeather: BaseWeather) {
-        Log.i("TAG", "onClick: ${baseWeather.timezone}")
+    override fun onClickDelete(baseWeather: BaseWeather) {
+        favWeatherViewModel.deleteFavWeather(baseWeather)
+    }
+
+    override fun onClickDetails(baseWeather: BaseWeather) {
+        val gson = Gson()
+        val json = gson.toJson(baseWeather)
+        startActivity(Intent(activity, FavouriteDetailsActivity::class.java)
+            .putExtra("object",json))
     }
 }

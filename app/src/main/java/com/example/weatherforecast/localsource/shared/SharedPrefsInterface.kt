@@ -1,6 +1,7 @@
 package com.example.weatherforecast.localsource.shared
 
 import com.example.weatherforecast.enum.Units
+import com.example.weatherforecast.pojo.AlertWeather
 import com.google.android.gms.maps.model.LatLng
 
 interface SharedPrefsInterface {

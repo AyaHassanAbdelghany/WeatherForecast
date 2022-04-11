@@ -84,5 +84,12 @@ dependencies {
     //location
     implementation 'com.google.android.gms:play-services-location:17.1.0'
 
+    //coroutines
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    //worker
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
+
 
 }

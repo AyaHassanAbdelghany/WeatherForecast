@@ -8,12 +8,12 @@ import com.example.weatherforecast.R
 import com.example.weatherforecast.constant.Constants
 import com.example.weatherforecast.databinding.IteamWeatherDayBinding
 import com.example.weatherforecast.constant.FormatWeather
-import com.example.weatherforecast.view.HomeFragment
 import com.example.weatherforecast.pojo.Daily
 import com.example.weatherforecast.viewmodel.HomeViewModel
 import com.squareup.picasso.Picasso
+import java.util.*
 
-class WeatherDailyAdapter :RecyclerView.Adapter<WeatherDailyAdapter.ViewHolder>() {
+class WeatherDailyAdapter (var lang :String):RecyclerView.Adapter<WeatherDailyAdapter.ViewHolder>() {
 
     private var days :List<Daily> = listOf()
 
@@ -30,12 +30,16 @@ class WeatherDailyAdapter :RecyclerView.Adapter<WeatherDailyAdapter.ViewHolder>(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(days[position+1])
 
     inner class ViewHolder(private var binding: IteamWeatherDayBinding) : RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("SetTextI18n")
         fun bind(currentItem: Daily){
 
-            binding.txtTemp.text = currentItem.temp.min.toString()+ HomeViewModel.weatherUnits.temp.unit +
-                    " / "+currentItem.temp.max.toString()+ HomeViewModel.weatherUnits.temp.unit
-            binding.txtDate.text =FormatWeather.getFormat(currentItem.dt,Constants.formatDay)
+            binding.txtTemp.text = "${
+                String.format(
+                    Locale(lang),"%d",
+                    currentItem.temp.min.toInt())} / ${ String.format(
+                Locale(lang),"%d",
+                currentItem.temp.max.toInt())} ${
+                HomeViewModel.weatherUnits.temp}"
+            binding.txtDate.text =FormatWeather.getFormat(currentItem.dt,Constants.formatDay,lang)
             binding.txtStatus.text = currentItem.weather.first().description
             val uri = FormatWeather.getIconFormat(currentItem.weather.first().icon)
             Picasso.get().load(uri).placeholder(R.drawable.clouds)

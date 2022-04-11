@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherforecast.databinding.IteamWeatherFavouriteBinding
 import com.example.weatherforecast.pojo.BaseWeather
+import com.example.weatherforecast.viewmodel.HomeViewModel
+import com.google.android.gms.maps.model.LatLng
 
 
-class FavouriteAdapter ( listner: OnClickFavouriteWeatherListner):RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {
+class FavouriteAdapter (var homeViewMoedl :HomeViewModel,listner: OnClickFavWeatherListner):RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {
 
     private var weatherList :List<BaseWeather> = listOf()
-    private  var listner :OnClickFavouriteWeatherListner = listner
+    private  var listner :OnClickFavWeatherListner = listner
 
     @SuppressLint("NotifyDataSetChanged")
     fun setWeather(weatherList :List<BaseWeather>){
@@ -28,11 +30,13 @@ class FavouriteAdapter ( listner: OnClickFavouriteWeatherListner):RecyclerView.A
 
     inner class ViewHolder(private var binding: IteamWeatherFavouriteBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(currentItem: BaseWeather){
-            binding.txtCountry.text = currentItem.timezone
-            binding.constraint.setOnClickListener{
-                listner.onClick(currentItem)
+            binding.txtCountry.text = homeViewMoedl.getCity(LatLng(currentItem.lat,currentItem.lon))
+            binding.imgDelete.setOnClickListener{
+                listner.onClickDelete(currentItem)
+            }
+            binding.constraint.setOnClickListener {
+                listner.onClickDetails(currentItem)
             }
         }
-
     }
 }

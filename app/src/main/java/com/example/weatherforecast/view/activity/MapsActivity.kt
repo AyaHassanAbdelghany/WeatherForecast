@@ -1,6 +1,5 @@
-package com.example.weatherforecast.view
+package com.example.weatherforecast.view.activity
 
-import android.app.Activity
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
@@ -86,6 +85,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .draggable(true).title("Egypt"))!!
         marker.showInfoWindow()
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation))
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(5f))
 
 
         // marker
@@ -96,8 +96,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             override fun onMarkerDragEnd(location: Marker) {
                 currentLocation = LatLng(location.position.latitude,location.position.longitude)
-                val address  = getAddress(geocoder
-                    .getFromLocation(currentLocation.latitude,currentLocation.longitude,1))
+                val address  = getCity(currentLocation)
                 marker.title =address
                 marker.showInfoWindow()
             }
@@ -112,21 +111,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.setOnMapClickListener { location ->
             currentLocation = LatLng(location.latitude, location.longitude)
             marker.position = location
-              val address = getAddress(
-                geocoder
-                    .getFromLocation(currentLocation.latitude, currentLocation.longitude, 1)
-            )
+              val address = getCity(currentLocation)
             marker.title = address
             marker.showInfoWindow()
         }
     }
 
-    private fun getAddress(address: List<Address>): String? {
-        var countryName: String?=null
-        if(!address.isNullOrEmpty()) {
-            countryName = address[0].countryName
+    fun getCity(loc: LatLng): String{
+        var local = Locale( homeViewModel.getLocalizationSharedPref())
+        val geocoder = Geocoder(this,local)
+        val addresses: List<Address> = geocoder.getFromLocation(loc.latitude, loc.longitude, 1)
+        if(!addresses.isNullOrEmpty()){
+            return addresses[0].countryName
         }
-        return countryName
+        else{
+            return ""
+        }
     }
 
     private fun init(){
@@ -140,7 +140,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             WeatherRepo.getInstance(
                 WeatherClient.getInstance()
                 , ConcreteLocalSource.getInstance(this)
-                , SharedPrefs.getInstance(this),this))
+                , SharedPrefs.getInstance(this),this),this)
         homeViewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
         geocoder= Geocoder(this, Locale.getDefault())
         locationViewModelFactory = LocationViewModelFactory(

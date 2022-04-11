@@ -1,8 +1,7 @@
-package com.example.weatherforecast.view
+package com.example.weatherforecast.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,11 +16,12 @@ import com.example.weatherforecast.localsource.db.ConcreteLocalSource
 import com.example.weatherforecast.localsource.shared.SharedPrefs
 import com.example.weatherforecast.network.WeatherClient
 import com.example.weatherforecast.repo.WeatherRepo
+import com.example.weatherforecast.view.activity.MainActivity
+import com.example.weatherforecast.view.activity.MapsActivity
 import com.example.weatherforecast.viewmodel.HomeViewModel
 import com.example.weatherforecast.viewmodel.LocationViewModel
 import com.example.weatherforecast.viewmodel.viewmodelfactory.HomeViewModelFactory
 import com.example.weatherforecast.viewmodel.viewmodelfactory.LocationViewModelFactory
-import java.util.*
 
 class SettingsFragment : Fragment() {
 
@@ -47,12 +47,6 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var selectedOption :Int
-
-        val lang = homeViewModel.getLocalizationSharedPref()
-        val config = resources.configuration
-        val locale = Locale(lang)
-        config.setLocale(locale)
-        resources.updateConfiguration(config,resources.displayMetrics)
 
         selectRadioTempWind( homeViewModel.getUnitSharedPrefs())
 
@@ -84,29 +78,34 @@ class SettingsFragment : Fragment() {
 
             val  radioGroup = view.findViewById<RadioGroup>(R.id.radioGroupLocation)
             val radioButton :RadioButton= view.findViewById(radioGroup!!.checkedRadioButtonId)
-            locationViewModel.addGpsOrMapSharedPre(radioButton.text.toString())
+
+            when (radioButton.text){
+                getString(R.string.gps)-> locationViewModel.addGpsOrMapSharedPre("GPS")
+                getString(R.string.map)-> locationViewModel.addGpsOrMapSharedPre("Map")
+            }
 
             val  radioGroupLang = view.findViewById<RadioGroup>(R.id.radioGroupLang)
             val radioButtonLang :RadioButton= view.findViewById(radioGroupLang!!.checkedRadioButtonId)
             when(radioButtonLang.text){
-                Units.Arabic.name -> homeViewModel.addLocalizationSharedPref(Units.Arabic.unit)
-                Units.English.name -> homeViewModel.addLocalizationSharedPref(Units.English.unit)
+                getString(R.string.arabic) -> homeViewModel.addLocalizationSharedPref(Units.Arabic.unit)
+                getString(R.string.english) -> homeViewModel.addLocalizationSharedPref(Units.English.unit)
             }
 
             var unit = Units.Standard
             val  radioGroupTemp = view.findViewById<RadioGroup>(R.id.radioGroupTemp)
             val radioButtonTemp :RadioButton= view.findViewById(radioGroupTemp!!.checkedRadioButtonId)
+
             when(radioButtonTemp.text){
-                Units.Kelvin.name->unit  = Units.Standard
-                Units.Celsius.name->unit = Units.Metric
-                Units.Fahrenheit.name->unit= Units.Imperial
+                getString(R.string.temp_kelvin_radioBtn)->unit = Units.Standard
+                getString(R.string.temp_celsius_radioBtn)->unit = Units.Metric
+                getString(R.string.temp_fahrenheit_radioBtn)->unit= Units.Imperial
             }
+
             homeViewModel.addUnitSharedPrefs(unit)
-            if(radioButton.text=="GPS")
+            if(radioButton.text==getString(R.string.gps))
                 startActivity(Intent(requireContext(), MainActivity::class.java))
            else  startActivity(Intent(requireContext(), MapsActivity::class.java))
         }
-
     }
 
 
@@ -130,15 +129,15 @@ class SettingsFragment : Fragment() {
     private fun selectRadioWind(selectOption:String){
 
         when(selectOption){
-            Units.Kelvin.name ->{binding.radioMeter.isChecked=true}
-            Units.Celsius.name->binding.radioMeter.isChecked= true
-            Units.Fahrenheit.name->binding.radioMile.isChecked=true
+            getString(R.string.temp_kelvin_radioBtn) ->{binding.radioMeter.isChecked=true}
+            getString(R.string.temp_celsius_radioBtn) ->binding.radioMeter.isChecked= true
+            getString(R.string.temp_fahrenheit_radioBtn) ->binding.radioMile.isChecked=true
         }
     }
     private fun selectRadioTemp(selectOption: String){
         when(selectOption){
-            Units.MeterPerSec.unit->binding.radioKelvin.isChecked=true
-            Units.MilesPerHour.unit->binding.radioFahrenit.isChecked= true
+            getString(R.string.meter_radioBtn) ->binding.radioKelvin.isChecked=true
+            getString(R.string.mile_radioBtn) ->binding.radioFahrenit.isChecked= true
         }
     }
 
@@ -155,7 +154,7 @@ class SettingsFragment : Fragment() {
             WeatherRepo.getInstance(
                 WeatherClient.getInstance()
                 , ConcreteLocalSource.getInstance(requireContext())
-                , SharedPrefs.getInstance(requireContext()),requireContext()))
+                , SharedPrefs.getInstance(requireContext()),requireContext()),requireContext())
         homeViewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
 
     }

@@ -1,6 +1,5 @@
 package com.example.weatherforecast.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,13 +28,19 @@ class FavWeatherViewModel(iRepo : RepoInterface) : ViewModel() {
     }
     fun getFavWeather(){
         viewModelScope.launch {
-        val weather = _iRepo.getFavWeatherOffline()
+        val weather = _iRepo.getFavWeather()
             withContext(Dispatchers.Main){
                 _favWeather.postValue(weather)
             }
         }
     }
-    fun deleteFavWeather(){
-
+    fun deleteFavWeather(weather: BaseWeather){
+        viewModelScope.launch {
+           _iRepo.deleteFavWeather(weather)
+            val weatherFav = _iRepo.getFavWeather()
+            withContext(Dispatchers.Main){
+                _favWeather.postValue(weatherFav)
+            }
+        }
     }
 }

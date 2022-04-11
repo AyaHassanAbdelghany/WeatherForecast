@@ -8,6 +8,8 @@ import com.example.roomdemomvvm.db.LocalSource
 import com.example.weatherforecast.enum.Units
 import com.example.weatherforecast.localsource.shared.SharedPrefsInterface
 import com.example.weatherforecast.network.RemoteSource
+import com.example.weatherforecast.pojo.Alert
+import com.example.weatherforecast.pojo.AlertWeather
 import com.example.weatherforecast.pojo.BaseWeather
 import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
@@ -34,16 +36,32 @@ class WeatherRepo  private constructor(
         return remoteSource.getWeather(lat, lon, unit.name, lang)
     }
 
-    override suspend fun getWeatherOffline(lat:Double, lon: Double): BaseWeather {
-        return localSource.getWeather(lat,lon)
+    override suspend fun getWeatherOffline(): BaseWeather {
+        return localSource.getWeather()
     }
 
     override fun insertFavWeather(weather: BaseWeather) {
         localSource.insertFavWeather(weather)
     }
 
-    override suspend fun getFavWeatherOffline(): List<BaseWeather> {
+    override suspend fun getFavWeather(): List<BaseWeather> {
         return localSource.getFavWeather()
+    }
+
+    override suspend fun deleteFavWeather(weather:BaseWeather) {
+        localSource.deleteFavWeather(weather)
+    }
+
+    override fun insertAlertWeather(alert: Alert) {
+        localSource.insertAlertWeather(alert)
+    }
+
+    override suspend fun getAlertWeather(): List<Alert> {
+        return localSource.getAlertWeather()
+    }
+
+    override suspend fun deleteAlertWeather(alert: Alert) {
+        localSource.deleteAlertWeather(alert)
     }
 
     override fun addGpsOrMapSharedPrefs(locaton: String) {
@@ -77,6 +95,7 @@ class WeatherRepo  private constructor(
     override fun getLocalizationSharedPref(): String {
         return sharedPrefs.getLocalizationSharedPref()
     }
+
 
     override  fun insertWeather(weather: BaseWeather) {
         localSource.insertWeather(weather)
