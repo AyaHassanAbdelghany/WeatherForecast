@@ -19,7 +19,8 @@ class FormatWeather {
             return Constants.baseUriImg+icon+ Constants.format_baseUriImg
         }
         fun getFormatLatLon(lat :Double,lon :Double):LatLng{
-           return (LatLng(String.format("%.3f",lat).toDouble(),String.format("%.3f",lon).toDouble()))
+            return (LatLng(String.format(Locale(Locale.ENGLISH.toString()),"%.3f",lat).toDouble(),
+               String.format(Locale(Locale.ENGLISH.toString()),"%.3f",lon).toDouble()))
         }
     }
 }

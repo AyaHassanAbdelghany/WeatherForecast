@@ -9,6 +9,7 @@ import android.location.Geocoder
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -91,19 +92,29 @@ class HomeFragment : Fragment() {
                     homeViewModel.getLocalizationSharedPref()
                 )
             }
-                homeViewModel.baseWeather.observe(viewLifecycleOwner) {
-                    with(homeViewModel) {
-                        insertWeather(it)
-                        showCurrentWeather(it)
-                        weatherDailyAdapter.setDays(it.daily)
-                        binding.recyclerDays.adapter = weatherDailyAdapter
-                        weatherHourlyAdapter.setHours(it.hourly)
-                        binding.recyclerHours.adapter = weatherHourlyAdapter
-                    }
-                }
+//                homeViewModel.baseWeather.observe(viewLifecycleOwner) {
+//                    with(homeViewModel) {
+//                        insertWeather(it)
+//                        showCurrentWeather(it)
+//                        weatherDailyAdapter.setDays(it.daily)
+//                        binding.recyclerDays.adapter = weatherDailyAdapter
+//                        weatherHourlyAdapter.setHours(it.hourly)
+//                        binding.recyclerHours.adapter = weatherHourlyAdapter
+//                    }
+//                }
             } else {
                 homeViewModel.getWeatherOffline()
             }
+            homeViewModel.baseWeather.observe(viewLifecycleOwner) {
+            with(homeViewModel) {
+                insertWeather(it)
+                showCurrentWeather(it)
+                weatherDailyAdapter.setDays(it.daily)
+                binding.recyclerDays.adapter = weatherDailyAdapter
+                weatherHourlyAdapter.setHours(it.hourly)
+                binding.recyclerHours.adapter = weatherHourlyAdapter
+            }
+        }
         }
 
     override fun onResume() {

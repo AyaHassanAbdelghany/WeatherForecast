@@ -5,6 +5,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.LocationManager
 import android.opengl.GLES10
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -96,6 +97,7 @@ class HomeViewModel(iRepo :RepoInterface,var context:Context) : ViewModel() {
 
     //room
      fun insertWeather(weather :BaseWeather){
+        Log.e("lat",weather.lat.toString())
        val latLon =  FormatWeather.getFormatLatLon(weather.lat,weather.lon)
         weather.lat= latLon.latitude
         weather.lon = latLon.longitude

@@ -3,6 +3,7 @@ package com.example.weatherforecast.view.activity
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherforecast.R
 import com.example.weatherforecast.adapter.WeatherDailyAdapter
@@ -20,6 +21,7 @@ import com.example.weatherforecast.viewmodel.viewmodelfactory.HomeViewModelFacto
 import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -53,12 +55,13 @@ class FavouriteDetailsActivity : AppCompatActivity() {
 
     }
     private fun showCurrentWeather(baseWeather: BaseWeather) {
+
         binding.txtLocation.text = homeViewModel.getCity(LatLng(baseWeather.lat,baseWeather.lon))
         binding.txtDate.text = FormatWeather.getFormat(baseWeather.current.dt, Constants.formatDate,lang)
-
         binding.cardview.txtTime.text = FormatWeather.getFormat(baseWeather.current.dt, Constants.formatTime,lang)
 
-        binding.cardview.txtStatus.text = baseWeather.current.weather.first().description
+        binding.cardview.txtStatus.text =
+            baseWeather.current.weather.first().description
 
         binding.cardview.txtTemp.text = "${
             String.format(
