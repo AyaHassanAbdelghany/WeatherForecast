@@ -11,8 +11,10 @@ interface WeatherDAO {
 
     @Query("SELECT * From weather LIMIT 1")
     suspend fun getWeather(): BaseWeather
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertWeather(weather: BaseWeather)
+
     @Query("DELETE FROM weather ")
      fun deleteWeather()
 

@@ -1,9 +1,8 @@
 package com.example.weatherforecast.view.activity
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherforecast.R
 import com.example.weatherforecast.adapter.WeatherDailyAdapter
@@ -21,13 +20,11 @@ import com.example.weatherforecast.viewmodel.viewmodelfactory.HomeViewModelFacto
 import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.roundToInt
 
-class FavouriteDetailsActivity : AppCompatActivity() {
+class FavouriteDetailsActivity : AppCompatActivity(){
 
-    private lateinit var binding :ActivityFavouriteDetailsBinding
+    private lateinit var binding : ActivityFavouriteDetailsBinding
     private lateinit var weatherDailyAdapter: WeatherDailyAdapter
     private lateinit var weatherHourlyAdapter: WeatherHourlyAdapter
     private lateinit var homeViewModel : HomeViewModel
@@ -54,6 +51,8 @@ class FavouriteDetailsActivity : AppCompatActivity() {
         binding.recyclerDays.adapter = weatherDailyAdapter
 
     }
+
+    @SuppressLint("SetTextI18n")
     private fun showCurrentWeather(baseWeather: BaseWeather) {
 
         binding.txtLocation.text = homeViewModel.getCity(LatLng(baseWeather.lat,baseWeather.lon))
@@ -75,38 +74,40 @@ class FavouriteDetailsActivity : AppCompatActivity() {
 
         binding.cardview.txtPressure.text =
             "${
-                String.format(Locale(lang),"%d",
+                String.format(
+                    Locale(lang),"%d",
                     baseWeather.current.pressure.toInt())}  ${
                 HomeViewModel.weatherUnits.pressure}"
 
         binding.cardview.txtHumidity.text =
             "${
-                String.format(Locale(lang),"%d",
+                String.format(
+                    Locale(lang),"%d",
                     baseWeather.current.humidity.toInt())}  ${
                 HomeViewModel.weatherUnits.humidity}"
 
         binding.cardview.txtWind.text =
             "${
-                String.format(Locale(lang),"%d",
+                String.format(
+                    Locale(lang),"%d",
                     baseWeather.current.wind_speed.toInt())} ${
                 HomeViewModel.weatherUnits.windSpeed}"
 
         binding.cardview.txtCloud.text =
 
             "${
-                String.format(Locale(lang),"%d",
+                String.format(
+                    Locale(lang),"%d",
                     baseWeather.current.clouds.toInt())} ${
                 HomeViewModel.weatherUnits.clouds}"
     }
-
-
     private fun init(){
 
         homeViewModelFactory = HomeViewModelFactory(
             WeatherRepo.getInstance(
                 WeatherClient.getInstance()
-            , ConcreteLocalSource.getInstance(this)
-            , SharedPrefs.getInstance(this),this),this)
+                , ConcreteLocalSource.getInstance(this)
+                , SharedPrefs.getInstance(this),this),this)
         homeViewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
 
         lang = homeViewModel.getLocalizationSharedPref()
