@@ -44,22 +44,22 @@ Android Mobile Application that displays the weather status and the temperature 
 <img src="https://user-images.githubusercontent.com/54456549/195083956-4e491b35-6961-4cf6-924f-0f19152367c7.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/54456549/195084110-939cebfd-673f-429a-8c69-8f0283657cb3.png" height="640" width="288">
 
--Favourite Details Screen
+-Favourite Details screen
 
 <img src="https://user-images.githubusercontent.com/54456549/195084290-0aa49320-7e16-4250-beed-b989db25cb41.png" height="640" width="288">
 
--Alert Screens
+-Alert screens
 
 <img src="https://user-images.githubusercontent.com/54456549/195084368-82f5627b-3b55-4ce9-a27f-23dde3bf7a42.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/54456549/195084394-a5f87adc-90b4-40d8-8c92-f68c344dc71b.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/54456549/195084431-a4769e17-dbba-4708-8bf7-b9bc2ea06cd7.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/54456549/195084459-9e3c5b53-49c2-4796-a9f3-11f807f06fd4.png" height="640" width="288">
 
--Notification Screen
+-Notification screen
 
 <img src="https://user-images.githubusercontent.com/54456549/195084514-da7f581e-fc2e-49b3-9b17-7a3101b4f245.png" height="640" width="288">
 
--Change Language Screens
+-Change Language screens
 
 <img src="https://user-images.githubusercontent.com/54456549/195084657-27f02e8e-b39b-4997-8373-d080137ff05b.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/54456549/195084722-116c8cf0-8aa7-45ab-9df8-d5917466347f.png" height="640" width="288">
