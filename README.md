@@ -31,9 +31,9 @@ Android Mobile Application that displays the weather status and the temperature 
 
 <img src="https://user-images.githubusercontent.com/54456549/195083263-188843b8-b571-486d-ab2b-d4022c7a5607.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/54456549/195083319-08d39845-c974-4767-be1e-b2f138226714.png" height="640" width="288">
-<img src="https://user-images.githubusercontent.com/54456549/195083430-b45f853d-5aeb-4249-ab3c-9e7adb533d94.png" height="640" width="28">
-<img src="https://user-images.githubusercontent.com/54456549/195084217-d4268eb9-d866-42b8-bd38-41e61e76c1d6.png" height="640" width="28">
-<img src="https://user-images.githubusercontent.com/54456549/195083588-6e611025-62b8-4863-b8d3-5c5b6652d76a.png" height="640" width="28">
+<img src="https://user-images.githubusercontent.com/54456549/195083430-b45f853d-5aeb-4249-ab3c-9e7adb533d94.png" height="640" width="288">
+<img src="https://user-images.githubusercontent.com/54456549/195084217-d4268eb9-d866-42b8-bd38-41e61e76c1d6.png" height="640" width="288">
+<img src="https://user-images.githubusercontent.com/54456549/195083588-6e611025-62b8-4863-b8d3-5c5b6652d76a.png" height="640" width="288">
 
 -Favourite screens
 
@@ -49,6 +49,7 @@ Android Mobile Application that displays the weather status and the temperature 
 <img src="https://user-images.githubusercontent.com/54456549/195084290-0aa49320-7e16-4250-beed-b989db25cb41.png" height="640" width="288">
 
 -Alert Screens
+
 <img src="https://user-images.githubusercontent.com/54456549/195084368-82f5627b-3b55-4ce9-a27f-23dde3bf7a42.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/54456549/195084394-a5f87adc-90b4-40d8-8c92-f68c344dc71b.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/54456549/195084431-a4769e17-dbba-4708-8bf7-b9bc2ea06cd7.png" height="640" width="288">
