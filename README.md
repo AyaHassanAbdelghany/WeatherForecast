@@ -24,7 +24,7 @@ Android Mobile Application that displays the weather status and the temperature 
 
 -Home screens
 
-<img src="https://user-images.githubusercontent.com/54456549/195083081-bb2d2ca4-0984-4589-b8ef-c282d4bde1fb.png" height="640" width="288">
+<img src="https://user-images.githubusercontent.com/54456549/195083018-f72df3cb-3f80-4eab-8f05-165ed2ff0f90.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/54456549/195083081-bb2d2ca4-0984-4589-b8ef-c282d4bde1fb.png" height="640" width="288">
 
 -Settings screens
