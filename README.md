@@ -1,6 +1,10 @@
 # WeatherForecast App 
 Android Mobile Application that displays the weather status and the temperature from your location. Also, you can pick a specific location on the map and add it to a list of favorite locations and get all the weather information at this location. In addition you can set an alerts for rain, wind, very low or very high temperature, snow …
 
+# Video Of App
+https://user-images.githubusercontent.com/54456549/207464497-7f858802-1be1-4f40-a0a9-acdc5fd82f8c.mp4
+
+
 # Tools & Libraries
 - Android studio.
 - Kotlin.
